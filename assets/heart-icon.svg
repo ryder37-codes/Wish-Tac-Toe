@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Stitched outline -->
+  <path d="M50,85 C50,85 20,60 20,40 C20,25 30,20 40,20 C45,20 50,25 50,25 C50,25 55,20 60,20 C70,20 80,25 80,40 C80,60 50,85 50,85 Z" 
+        fill="#c9184a" 
+        stroke="#a4133c" 
+        stroke-width="2" 
+        stroke-dasharray="4,3"
+        stroke-linecap="round"/>
+  <!-- Inner felt layer -->
+  <path d="M50,78 C50,78 26,56 26,40 C26,28 34,25 40,25 C45,25 50,30 50,30 C50,30 55,25 60,25 C66,25 74,28 74,40 C74,56 50,78 50,78 Z" 
+        fill="#ff6b9d" 
+        opacity="0.8"/>
+</svg>

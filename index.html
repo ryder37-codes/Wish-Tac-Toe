@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wish-Tac-Toe — A Valentine's Game</title>
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sacramento&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="app-frame">
+
+    
+    <div class="screen home-screen active">
+      <h1 class="title">Wish-Tac-Toe</h1>
+      <p class="tagline">Play together. Win a wish.<br>Made with love for you and your partner.</p>
+      <button class="btn start-btn">Start</button>
+    </div>
+
+    
+    <div class="screen character-screen">
+      <button class="back-btn" data-back="home">← Back</button>
+      <h2 class="screen-title">Choose your character</h2>
+
+      <div class="character-options">
+        <div class="character-card" data-character="girl">
+          👧
+          <p>Player 1</p>
+        </div>
+        <div class="character-card" data-character="boy">
+          👦
+          <p>Player 2</p>
+        </div>
+      </div>
+
+      <p class="hint">You guys are a great couple!</p>
+      <button class="btn continue-btn" disabled>Continue</button>
+    </div>
+
+    
+    <div class="screen setup-screen">
+      <button class="back-btn" data-back="character">← Back</button>
+      <h2 class="screen-title">Set up your game</h2>
+
+      <input class="input name-input" placeholder="Your name" maxlength="20" autocomplete="off" />
+
+      <button class="btn create-btn">Create New Game</button>
+
+      <div class="game-id-box">
+        <input class="input game-id-input" readonly placeholder="Game ID" autocomplete="off" />
+        <button class="btn copy-btn">Copy</button>
+      </div>
+
+      <p class="hint">— or —</p>
+
+      <input class="input join-input" placeholder="Enter Game ID to join" maxlength="6" autocomplete="off" />
+      <button class="btn join-btn">Join Game</button>
+    </div>
+
+    
+    <div class="screen waiting-screen">
+      <button class="back-btn" data-back="setup">← Back</button>
+      <h2 class="screen-title">Waiting for your partner...</h2>
+      <p class="hint">Share this Game ID:</p>
+      <div class="waiting-id"></div>
+      <div class="heartbeat">❤️</div>
+      <p class="hint waiting-message">Your partner will join soon</p>
+      <button class="btn start-game-btn" disabled>Waiting...</button>
+    </div>
+
+    
+    <div class="screen game-screen">
+      <div class="player-info">
+        <div class="player-label">
+          <span class="player-name"></span>
+          <span class="player-symbol"></span>
+        </div>
+        <div class="turn-indicator"></div>
+        <p class="hint turn-hint">Waiting for your turn...</p>
+      </div>
+
+      <div class="tic-grid">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+
+      <p class="hint turn-hint">Waiting for your turn...</p>
+    </div>
+
+    
+    <div class="screen result-screen">
+      <h2 class="screen-title result-title"></h2>
+      <p class="result-text"></p>
+      <button class="btn play-again-btn">Play Again</button>
+      <button class="btn home-btn">Go Home</button>
+    </div>
+
+  </div>
+
+  
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
