@@ -1,9 +1,7 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sacramento&display=swap');
 
 :root {
-  
+
   --cream: #f8f4f0;
   --pink-gingham-light: #ffc8dd;
   --pink-gingham-dark: #ffb3d1;
@@ -15,7 +13,7 @@
   --shadow-soft: rgba(201, 24, 74, 0.15);
   --shadow-medium: rgba(201, 24, 74, 0.25);
 
-  
+
   --font-display: 'Sacramento', cursive;
   --font-body: 'Poppins', sans-serif;
 }
@@ -34,7 +32,7 @@ body {
   font-family: var(--font-body);
   padding: 20px;
 
-  
+
   background-color: var(--pink-gingham-light);
   background-image:
     repeating-linear-gradient(0deg,
@@ -67,7 +65,7 @@ body {
   text-align: center;
   position: relative;
 
-  
+
   box-shadow:
     0 8px 0 var(--beige-felt),
     0 12px 24px rgba(0, 0, 0, 0.08),
@@ -254,7 +252,7 @@ body {
   transition: all 0.3s ease;
   position: relative;
 
-  
+
   box-shadow:
     0 4px 0 var(--pink-medium),
     0 6px 12px var(--shadow-soft);

@@ -344,6 +344,7 @@ function showResult(winner) {
     resultText.innerHTML = 'Your partner gets a wish!<br>You must fulfill it! Be generous! ✨';
   }
 }
+/*
 document.querySelector('.play-again-btn').onclick = () => {
   console.log('Play Again clicked!');
   if (gameRef) {
@@ -376,6 +377,7 @@ document.querySelector('.play-again-btn').onclick = () => {
     alert('No active game found. Please go home and start a new game.');
   }
 };
+*/
 document.querySelector('.home-btn').onclick = () => {
   if (gameRef) {
     gameRef.off();

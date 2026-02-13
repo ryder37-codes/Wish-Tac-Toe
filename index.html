@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wish-Tac-Toe — A Valentine's Game</title>
 
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sacramento&display=swap"
@@ -19,14 +19,14 @@
 
   <div class="app-frame">
 
-    
+
     <div class="screen home-screen active">
       <h1 class="title">Wish-Tac-Toe</h1>
       <p class="tagline">Play together. Win a wish.<br>Made with love for you and your partner.</p>
       <button class="btn start-btn">Start</button>
     </div>
 
-    
+
     <div class="screen character-screen">
       <button class="back-btn" data-back="home">← Back</button>
       <h2 class="screen-title">Choose your character</h2>
@@ -46,7 +46,7 @@
       <button class="btn continue-btn" disabled>Continue</button>
     </div>
 
-    
+
     <div class="screen setup-screen">
       <button class="back-btn" data-back="character">← Back</button>
       <h2 class="screen-title">Set up your game</h2>
@@ -66,7 +66,7 @@
       <button class="btn join-btn">Join Game</button>
     </div>
 
-    
+
     <div class="screen waiting-screen">
       <button class="back-btn" data-back="setup">← Back</button>
       <h2 class="screen-title">Waiting for your partner...</h2>
@@ -77,7 +77,7 @@
       <button class="btn start-game-btn" disabled>Waiting...</button>
     </div>
 
-    
+
     <div class="screen game-screen">
       <div class="player-info">
         <div class="player-label">
@@ -103,17 +103,17 @@
       <p class="hint turn-hint">Waiting for your turn...</p>
     </div>
 
-    
+
     <div class="screen result-screen">
       <h2 class="screen-title result-title"></h2>
       <p class="result-text"></p>
-      <button class="btn play-again-btn">Play Again</button>
+      <!-- <button class="btn play-again-btn">Play Again</button> -->
       <button class="btn home-btn">Go Home</button>
     </div>
 
   </div>
 
-  
+
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
   <script src="firebase-config.js"></script>
