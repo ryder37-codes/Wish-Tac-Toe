@@ -202,6 +202,8 @@ function startGame() {
   playerNameDisplay.textContent = playerName;
   playerSymbolDisplay.textContent = playerSymbol === 'X' ? '❤️' : '✖️';
   let lastBoard = Array(9).fill(null);
+  let isRestarting = false;
+
   gameRef.on('value', (snapshot) => {
     const game = snapshot.val();
     if (!game) return;
@@ -253,13 +255,17 @@ function startGame() {
         cell.style.opacity = '0.6';
       });
     }
-    if (game.status === 'finished') {
+    if (game.status === 'finished' && !isRestarting) {
       showResult(game.winner);
     }
   });
   cells.forEach((cell, index) => {
     cell.onclick = () => makeMove(index);
   });
+
+  window.restartGame = () => {
+    isRestarting = true;
+  };
 }
 function makeMove(index) {
   gameRef.once('value', (snapshot) => {
@@ -344,20 +350,23 @@ function showResult(winner) {
 }
 document.querySelector('.play-again-btn').onclick = () => {
   if (gameRef) {
+    if (window.restartGame) window.restartGame();
+    gameRef.off();
+
     gameRef.once('value', (snapshot) => {
       const game = snapshot.val();
       const lastStarter = game.startingPlayer || 'X';
       const nextStarter = lastStarter === 'X' ? 'O' : 'X';
-      gameRef.off();
+
       gameRef.update({
         board: [null, null, null, null, null, null, null, null, null],
         currentTurn: nextStarter,
         startingPlayer: nextStarter,
         status: 'playing',
         winner: null
+      }).then(() => {
+        startGame();
       });
-      gameStarted = false;
-      startGame();
     });
   }
 };
