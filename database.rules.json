@@ -8,19 +8,19 @@
           ".write": "!data.exists() || (data.exists() && !newData.child('symbol').exists())"
         },
         "player2": {
-          ".write": "!data.child('joined').val() || newData.child('joined').val() === true"
+          ".write": "data.child('joined').val() !== true || newData.child('joined').val() === true"
         },
         "board": {
-          ".write": "root.child('games').child($gameId).child('status').val() === 'playing'"
+          ".write": "newData.parent().child('status').val() === 'playing'"
         },
         "currentTurn": {
-          ".write": "root.child('games').child($gameId).child('status').val() === 'playing'"
+          ".write": "newData.parent().child('status').val() === 'playing'"
         },
         "status": {
           ".write": "(data.val() === 'waiting' && newData.val() === 'playing') || newData.val() === 'finished' || (data.val() === 'finished' && newData.val() === 'playing')"
         },
         "winner": {
-          ".write": "root.child('games').child($gameId).child('status').val() === 'finished' || newData.parent().child('status').val() === 'finished'"
+          ".write": "root.child('games').child($gameId).child('status').val() === 'finished' || newData.parent().child('status').val() === 'finished' || newData.parent().child('status').val() === 'playing'"
         },
         "startingPlayer": {
           ".write": true
