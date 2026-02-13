@@ -202,7 +202,6 @@ function startGame() {
   playerNameDisplay.textContent = playerName;
   playerSymbolDisplay.textContent = playerSymbol === 'X' ? '❤️' : '✖️';
   let lastBoard = Array(9).fill(null);
-  let isRestarting = false;
 
   gameRef.on('value', (snapshot) => {
     const game = snapshot.val();
@@ -255,17 +254,14 @@ function startGame() {
         cell.style.opacity = '0.6';
       });
     }
-    if (game.status === 'finished' && !isRestarting) {
+    const hasGameData = board.some(cell => cell !== null);
+    if (game.status === 'finished' && hasGameData) {
       showResult(game.winner);
     }
   });
   cells.forEach((cell, index) => {
     cell.onclick = () => makeMove(index);
   });
-
-  window.restartGame = () => {
-    isRestarting = true;
-  };
 }
 function makeMove(index) {
   gameRef.once('value', (snapshot) => {
@@ -349,14 +345,17 @@ function showResult(winner) {
   }
 }
 document.querySelector('.play-again-btn').onclick = () => {
+  console.log('Play Again clicked!');
   if (gameRef) {
-    if (window.restartGame) window.restartGame();
+    console.log('gameRef exists, removing listeners...');
     gameRef.off();
 
     gameRef.once('value', (snapshot) => {
       const game = snapshot.val();
+      console.log('Current game state:', game);
       const lastStarter = game.startingPlayer || 'X';
       const nextStarter = lastStarter === 'X' ? 'O' : 'X';
+      console.log('Resetting game, next starter:', nextStarter);
 
       gameRef.update({
         board: [null, null, null, null, null, null, null, null, null],
@@ -365,9 +364,16 @@ document.querySelector('.play-again-btn').onclick = () => {
         status: 'playing',
         winner: null
       }).then(() => {
+        console.log('Game reset successful, restarting...');
         startGame();
+      }).catch((error) => {
+        console.error('Failed to reset game:', error);
+        alert('Failed to restart game. Error: ' + error.message);
       });
     });
+  } else {
+    console.error('gameRef is null!');
+    alert('No active game found. Please go home and start a new game.');
   }
 };
 document.querySelector('.home-btn').onclick = () => {
