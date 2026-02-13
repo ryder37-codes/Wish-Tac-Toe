@@ -7,9 +7,9 @@ const screens = {
   result: document.querySelector('.result-screen'),
 };
 let gameId = null;
-let playerRole = null; 
+let playerRole = null;
 let playerName = '';
-let playerSymbol = null; 
+let playerSymbol = null;
 let gameRef = null;
 let gameStarted = false;
 const sounds = {
@@ -110,7 +110,7 @@ document.querySelector('.create-btn').onclick = () => {
     },
     board: [null, null, null, null, null, null, null, null, null],
     currentTurn: 'X',
-    startingPlayer: 'X', 
+    startingPlayer: 'X',
     status: 'waiting',
     winner: null
   });
@@ -312,9 +312,9 @@ function makeMove(index) {
 }
 function checkWinner(board) {
   const winPatterns = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], 
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], 
-    [0, 4, 8], [2, 4, 6]             
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
   ];
   for (let pattern of winPatterns) {
     const [a, b, c] = pattern;
@@ -348,6 +348,7 @@ document.querySelector('.play-again-btn').onclick = () => {
       const game = snapshot.val();
       const lastStarter = game.startingPlayer || 'X';
       const nextStarter = lastStarter === 'X' ? 'O' : 'X';
+      gameRef.off();
       gameRef.update({
         board: [null, null, null, null, null, null, null, null, null],
         currentTurn: nextStarter,
@@ -355,7 +356,7 @@ document.querySelector('.play-again-btn').onclick = () => {
         status: 'playing',
         winner: null
       });
-      gameStarted = true;
+      gameStarted = false;
       startGame();
     });
   }
